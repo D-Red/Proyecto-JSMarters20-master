@@ -36,7 +36,7 @@ function addStudentToTable(student){
     `;
 
     // Botón para Eliminar
-    row.querySelector(".delete-bth").addEventListener("click",function(){
+    row.querySelector(".delete-btn").addEventListener("click",function(){
         borrarEstudiante(student,row);
     });
 
