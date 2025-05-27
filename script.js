@@ -2,7 +2,7 @@ const students=[];
 
 document.getElementById("studentForm").addEventListener("submit", function(e){
     e.preventDefault();
-
+    
     const name=document.getElementById("name").value.trim();
     const lastName=document.getElementById("lastname").value.trim();
     const grade=parseFloat(document.getElementById("grade").value);
@@ -13,7 +13,7 @@ document.getElementById("studentForm").addEventListener("submit", function(e){
         return;
     }
 
-    const student={name,lastName,grade}
+    const student={name, lastName, grade, date};
     students.push(student)
     //console.log(students)
     addStudentToTable(student);
@@ -68,15 +68,30 @@ function editarEstudiante(student, row) {
 }
 
 const averageDiv=document.getElementById("average");
+const totalCountSpan = document.getElementById("totalCount");
+const approvedCountSpan = document.getElementById("approvedCount");
+const failedCountSpan = document.getElementById("failedCount");
 
-function calcularPromedio(){
+
+function calcularPromedio() {
     let suma = 0;
-    for (const student of students){
-        suma += student.grade;
-    }
-    const count = students.length;
-    const promedio = suma / count;
-    console.log(promedio);
-    averageDiv.textContent = "Promedio General del Curso :" +promedio;
+    let aprobados = 0;
+    let reprobados = 0;
 
+    for (const student of students) {
+        suma += student.grade;
+        if (student.grade >= 4) {
+            aprobados++;
+        } else {
+            reprobados++;
+        }
+    }
+
+    const count = students.length;
+    const promedio = count > 0 ? (suma / count).toFixed(2) : "N/A";
+
+    averageDiv.textContent = "Promedio General del Curso : " + promedio;
+    totalCountSpan.textContent = count;
+    approvedCountSpan.textContent = aprobados;
+    failedCountSpan.textContent = reprobados;
 }

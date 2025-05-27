@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         #average {
             margin: 16px 0;
@@ -21,6 +22,12 @@
 <body>
     <h2>Notas Asignatura Front-End</h2>
     <div id="average">Promedio General del Curso : N/A</div>
+
+    <div id="summary">
+        <p>Total de Alumnos: <span id="totalCount">0</span></p>
+        <p>Alumnos Aprobados: <span id="approvedCount">0</span></p>
+        <p>Alumnos Reprobados: <span id="failedCount">0</span></p>
+    </div>
 
     <form id="studentForm">
         <div>
